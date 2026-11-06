@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080d20">
+  <meta name="description" content="Cyber Quest is a friendly space adventure with 250 cyber-safety and logic missions across 10 worlds.">
+  <title>Cyber Quest — Junior Agent Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div id="space-bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Cyber Quest home"><span class="brand-mark">✦</span><span>CYBER<span class="brand-accent">QUEST</span></span></a>
+    <div class="top-actions"><span class="save-status"><i></i> PROGRESS SAVED</span><button id="sound-toggle" class="icon-button" aria-label="Turn sound off" title="Sound on">♫</button></div>
+  </header>
+  <main id="app" class="app-shell">
+    <section id="home-screen" class="screen hero-screen">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> JUNIOR AGENT TRAINING <span class="eyebrow-line"></span></div>
+        <div class="hero-title-wrap"><div class="planet-orbit" aria-hidden="true"><span></span><b>✦</b></div><h1>CYBER<br><span>QUEST</span></h1></div>
+        <p class="hero-tagline">The universe needs a <strong>curious mind.</strong></p>
+        <p class="hero-description">Crack clues, spot sneaky messages and help a little robot find its way across the stars.</p>
+        <button id="start-button" class="primary-button"><span>START YOUR MISSION</span><b>→</b></button>
+        <div class="hero-footnote"><span>✧</span> A space adventure for future cyber heroes <span>✧</span></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true"><div class="big-orbit orbit-one"></div><div class="big-orbit orbit-two"></div><div class="hero-planet"><div class="planet-ring"></div><div class="planet-shine"></div><div class="planet-crater crater-one"></div><div class="planet-crater crater-two"></div></div><div class="moon"></div><div class="satellite">✦</div><div class="float-chip chip-a">01 / 250</div><div class="float-chip chip-b">10 WORLDS</div><div class="constellation">· &nbsp; ·<br>&nbsp; ✧</div></div>
+    </section>
+    <section id="profile-screen" class="screen centered-screen" hidden>
+      <div class="panel profile-panel"><button class="back-link" data-screen="home">← Back</button><div class="eyebrow">NEW AGENT REGISTRATION</div><div class="panel-icon">☄</div><h2>What should we call you?</h2><p>Your codename appears on your mission badge. You can change it later.</p><label class="field-label" for="agent-name">AGENT CODENAME</label><input id="agent-name" maxlength="18" autocomplete="nickname" placeholder="e.g. Star Pilot" value="Nova Scout"><div class="avatar-picker"><span class="field-label">CHOOSE YOUR PATCH</span><div class="avatar-options" role="group" aria-label="Choose agent patch"><button class="avatar-option selected" data-avatar="🚀" aria-pressed="true">🚀</button><button class="avatar-option" data-avatar="🪐" aria-pressed="false">🪐</button><button class="avatar-option" data-avatar="👾" aria-pressed="false">👾</button><button class="avatar-option" data-avatar="🌟" aria-pressed="false">🌟</button></div></div><button id="profile-continue" class="primary-button full-button"><span>ENTER THE GALAXY</span><b>→</b></button></div>
+    </section>
+    <section id="map-screen" class="screen map-screen" hidden>
+      <div class="map-heading"><div><div class="eyebrow">YOUR TRAINING LOG · 250 MISSIONS</div><h2>Choose a mission, <span id="agent-greeting">Agent</span></h2><p>Ten worlds. Five cyber skills. One curious agent.</p></div><div class="agent-badge"><span id="map-avatar">🚀</span><div><strong id="map-codename">Nova Scout</strong><small>JUNIOR AGENT</small></div><div class="xp-chip"><span>✦</span> <b id="xp-total">0</b> XP</div></div></div>
+      <div class="world-card"><div class="world-art" aria-hidden="true"><span class="world-star">✧</span><span class="world-planet"></span><span class="world-moon"></span></div><div class="world-info"><div id="world-kicker" class="world-kicker">WORLD 01 <span>•</span> DIGITAL DETECTIVE</div><h3 id="world-title">Signals from the stars</h3><p id="world-description">Friendly puzzles to help keep our galaxy safe.</p><div class="world-progress"><div class="progress-track"><i id="world-progress-fill"></i></div><span id="world-progress-label">0 / 25 COMPLETE</span></div></div><div id="world-unlocked" class="world-unlocked"><span>◉</span> UNLOCKED</div></div>
+      <nav id="world-list" class="world-list" aria-label="Choose a world"></nav>
+      <div class="missions-heading"><h3>MISSION BOARD</h3><span id="mission-board-note">Complete a mission to open the next one <span class="tiny-star">✦</span></span></div>
+      <div id="mission-list" class="mission-list"></div>
+      <footer class="map-footer"><span>✦ LEARN A LITTLE. SAVE A LOT.</span><span>10 WORLDS · 250 MISSIONS</span></footer>
+    </section>
+    <section id="mission-screen" class="screen mission-screen" hidden>
+      <div class="mission-top"><button id="back-to-map" class="back-link">← Mission board</button><span id="mission-count" class="mission-count">MISSION 001 / 250</span><button id="hint-button" class="hint-button">✧ <span>NEED A HINT?</span></button></div>
+      <div class="mission-layout"><aside class="mission-aside"><div class="mission-illustration" id="mission-illustration" aria-hidden="true"><span>🔐</span><i>✧</i><b>·</b></div><div class="mission-kind">WORLD 01 · DIGITAL DETECTIVE</div><div class="mission-number" id="mission-number">01</div><div class="aside-tip"><span>✦ AGENT TIP</span><p id="aside-tip-text">Take your time. A good detective notices the little details.</p></div></aside><div class="mission-content"><div class="mission-category" id="mission-category">PASSWORD DETECTIVE</div><h2 id="mission-title">A secret for the starship</h2><p id="mission-instructions" class="mission-instructions"></p><div id="puzzle-area" class="puzzle-area"></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div class="mission-actions"><button id="check-answer" class="primary-button"><span>CHECK MY ANSWER</span><b>→</b></button><span class="points-note">✦ UP TO <b>100</b> XP</span></div></div></div>
+      <div id="complete-overlay" class="complete-overlay" hidden><div class="complete-card"><div class="complete-confetti">✦ &nbsp; · &nbsp; ✧ &nbsp; · &nbsp; ✦</div><div class="complete-icon">🌠</div><div class="eyebrow">MISSION COMPLETE</div><h2 id="complete-title">Brilliant work, Agent!</h2><div id="star-display" class="star-display">★★★</div><p id="complete-summary">You earned 100 XP.</p><button id="continue-button" class="primary-button"><span>CONTINUE</span><b>→</b></button></div></div>
+    </section>
+  </main>
+  <div id="hint-modal" class="modal-backdrop" hidden><div class="hint-modal panel"><button id="hint-close" class="modal-close" aria-label="Close">×</button><div class="panel-icon">💡</div><div class="eyebrow">A LITTLE NUDGE</div><h2 id="hint-title">Agent tip</h2><p id="hint-text"></p><button id="hint-ok" class="secondary-button">GOT IT</button></div></div>
+  <script>document.addEventListener('DOMContentLoaded',()=>{if(!window.Phaser){document.body.classList.add('no-phaser');}});</script>
+</body>
+</html>
